@@ -35,8 +35,10 @@ def update_crm_data():
         writer.writeheader()
         writer.writerows(crm_data)
 
-    # Log the update explanation to the console
-    print(update_explanation)
+    # Return the update explanation
+    return update_explanation
 
 # Example usage
-update_crm_data()
+if __name__ == '__main__':
+    explanation = update_crm_data()
+    print(explanation)
