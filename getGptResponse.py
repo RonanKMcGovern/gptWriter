@@ -16,7 +16,7 @@ def read_csv_file(file_name):
 def get_openai_response(user_input, crm_input, sample_output):
     messages = [
         {"role": "system", "content": "You are a helpful assistant and JSON expert."},
-        {"role": "user", "content": "I am going to provide you with some input data and a command on how I would like to update that data. I expect a response in stringified JSON format that will be helpful as an input for me to update a database."},
+        {"role": "user", "content": "I am going to provide you with some input data and a command on how I would like to update that data. I expect a response in JSON format that will be helpful as an input for me to update a database."},
         {"role": "assistant", "content": "Thanks for this guidance."},
         {"role": "user", "content": f"Here is a sample output: {sample_output}."},
         {"role": "assistant", "content": "Thanks for this sample output."},

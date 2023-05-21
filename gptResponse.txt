@@ -1,12 +1,12 @@
-Here is the updated output that you can use as input for your CRM:
+Here's the response in JSON format:
 
 ```
 {
   "csv_file": "crmInput.csv",
   "search_value": "XYZ Corporation",
   "update_key": "Status",
-  "update_value": "Extravagent Sale"
+  "update_value": "Big Massive Sale"
 }
 ```
 
-Please note that this output updates the status of the company "XYZ Corporation" to "Extravagent Sale" in your existing CRM data.
+You can use this response to update your CRM. You would need to search for the row containing "XYZ Corporation" in the CSV file "crmInput.csv" and update the value for the "Status" column to "Big Massive Sale".

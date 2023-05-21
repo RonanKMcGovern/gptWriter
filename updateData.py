@@ -2,8 +2,8 @@ import csv
 import json
 
 def update_crm_data():
-    # Read the input variables from updateJson.txt
-    with open("updateJson.txt", "r") as file:
+    # Read the input variables from updateJson.json
+    with open("updateJson.json", "r") as file:
         data = json.load(file)
         csv_file = data["csv_file"]
         search_value = data["search_value"]
