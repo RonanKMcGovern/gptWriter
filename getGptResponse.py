@@ -4,6 +4,12 @@ import json
 from dotenv import load_dotenv
 import openai
 
+# Load .env file
+load_dotenv(dotenv_path='.env')
+
+# Setup OpenAI
+openai.api_key = os.getenv('OPENAI_API_KEY')
+
 def read_file(file_name):
     with open(file_name, "r") as file:
         return file.read()
@@ -13,10 +19,14 @@ def read_csv_file(file_name):
         csvreader = csv.reader(file)
         return json.dumps(list(csvreader))
 
-def get_openai_response(user_input, crm_input="crmInput.csv", sample_output="sampleOutput.txt"):
+def get_openai_response(user_input, crm_input_file="crmInput.csv", sample_output_file="sampleOutput.txt"):
+    # Read the contents from the files
+    crm_input = read_csv_file(crm_input_file)
+    sample_output = read_file(sample_output_file)
+
     messages = [
         {"role": "system", "content": "You are a helpful assistant and JSON expert."},
-        {"role": "user", "content": "I am going to provide you with some input data and a command on how I would like to update that data. I expect a response in JSON format that will be helpful as an input for me to update a database."},
+        {"role": "user", "content": "I am going to provide you with some input data along with a command. I would like you provide me with a JSON object as a response with same keys as the sample output I will provide."},
         {"role": "assistant", "content": "Thanks for this guidance."},
         {"role": "user", "content": f"Here is a sample output: {sample_output}."},
         {"role": "assistant", "content": "Thanks for this sample output."},
@@ -24,6 +34,8 @@ def get_openai_response(user_input, crm_input="crmInput.csv", sample_output="sam
         {"role": "assistant", "content": "Thanks for this input data."},
         {"role": "user", "content": f"Here is the command: {user_input}."},
     ]
+
+    print(messages)
     
     try:
         response = openai.ChatCompletion.create(
@@ -40,15 +52,11 @@ def get_openai_response(user_input, crm_input="crmInput.csv", sample_output="sam
     except Exception as e:
         raise Exception(f"Failed to generate OpenAI response: {str(e)}") from e
 
-def process_openai_response(user_input, crm_input="crmInput.csv", sample_output="sampleOutput.txt"):
-    # Load .env file
-    load_dotenv(dotenv_path='.env')
+def process_openai_response(user_input):
 
-    # Setup OpenAI
-    openai.api_key = os.getenv('OPENAI_API_KEY')
+    user_input = read_file(user_input)
 
-    return get_openai_response(user_input, crm_input, sample_output)
-
+    return get_openai_response(user_input)
 # Example usage
 if __name__ == '__main__':
     user_input = read_file("userInput.txt")

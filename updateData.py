@@ -5,7 +5,7 @@ def update_crm_data():
     # Read the input variables from updateJson.json
     with open("updateJson.json", "r") as file:
         data = json.load(file)
-        csv_file = data["csv_file"]
+        csv_file = "/Users/ronanmcgovern/gptWriter/crmInput.csv"
         search_value = data["search_value"]
         update_key = data["update_key"]
         update_value = data["update_value"]

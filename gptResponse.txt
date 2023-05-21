@@ -1,10 +1,7 @@
-Here is the updated JSON command to reflect the changes:
-```
+Thanks for the command. Here's the JSON object as a response:
+
 {
-  "csv_file": "crmInput.csv",
-  "search_value": "ABC Company",
-  "update_key": "Address",
-  "update_value": "35 River Court, Philadelphia"
+  "search_value": "123 Industries",
+  "update_key": "Email",
+  "update_value": "yowdy@michael.johnson"
 }
-```
-The updated JSON command specifies that we want to update the `Address` field of the record whose `Company` field has the value `"ABC Company"` to `"35 River Court, Philadelphia"`.

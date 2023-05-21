@@ -18,5 +18,5 @@ def process_command(command):
 
 # Example usage
 if __name__ == '__main__':
-    command = "Update Michael Johnson's email to hello@michael.johnson"
+    command = "Update 123 Industries email to yowdy@michael.johnson"
     process_command(command)
