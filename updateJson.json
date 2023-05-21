@@ -1,6 +1,6 @@
 {
     "csv_file": "crmInput.csv",
-    "search_value": "123 Industries",
-    "update_key": "Phone",
-    "update_value": "790 3490 7894"
+    "search_value": "ABC Company",
+    "update_key": "Address",
+    "update_value": "35 River Court, Philadelphia"
 }

@@ -15,10 +15,18 @@ def update_crm_data():
         reader = csv.DictReader(file)
         crm_data = list(reader)
 
+    # Variable to store the update explanation
+    update_explanation = ""
+
     # Iterate through the CRM data and update the key-value pair for the search value
     for prospect in crm_data:
         if prospect['Company'] == search_value:
-            prospect[update_key] = update_value
+            # Check if the value is already up to date
+            if prospect[update_key] != update_value:
+                update_explanation = f"Updated '{update_key}' for '{search_value}' from '{prospect[update_key]}' to '{update_value}'."
+                prospect[update_key] = update_value
+            else:
+                update_explanation = f"No update made. '{update_key}' for '{search_value}' is already '{update_value}'."
 
     # Write the updated data back to the CSV file
     with open(csv_file, 'w', newline='') as file:
@@ -26,6 +34,9 @@ def update_crm_data():
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(crm_data)
+
+    # Log the update explanation to the console
+    print(update_explanation)
 
 # Example usage
 update_crm_data()
