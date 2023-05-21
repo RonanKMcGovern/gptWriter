@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database Updater</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 600px;
+            padding: 15px;
+            font-size: 48px;
+            border-radius: 10px;
+            border: 2px solid #007bff;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            padding: 15px 30px;
+            font-size: 48px;
+            border-radius: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 72px;
+        }
+
+        h2 {
+            color: #555;
+            margin-top: 30px;
+            font-size: 56px;
+        }
+
+        p {
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Database Updater</h1>
+    <form method="POST">
+        <input type="text" name="command" placeholder="Please update company x's phone number to 333 000 1298" required>
+        <input type="submit" value="Submit">
+    </form>
+    <h2>Response:</h2>
+    <p>{{ response }}</p>
+</body>
+</html>

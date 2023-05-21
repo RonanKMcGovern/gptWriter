@@ -1,7 +1,10 @@
-Thanks for the command. Here's the JSON object as a response:
+Based on your input data and command, here is the JSON object as a response:
 
+```
 {
-  "search_value": "123 Industries",
-  "update_key": "Email",
-  "update_value": "yowdy@michael.johnson"
+  "search_value": "ABC Company",
+  "update_key": "Phone",
+  "update_value": "567856785"
 }
+```
+Please let me know if you need any further assistance.
