@@ -21,7 +21,7 @@ def get_openai_response(user_input, crm_input, sample_output):
         {"role": "user", "content": f"Here is a sample output: {sample_output}."},
         {"role": "assistant", "content": "Thanks for this sample output."},
         {"role": "user", "content": f"Here is the input data: {crm_input}."},
-        {"role": "assistant", "content": "Thanks for this sample input data."},
+        {"role": "assistant", "content": "Thanks for this input data."},
         {"role": "user", "content": f"Here is the command: {user_input}."},
     ]
     
