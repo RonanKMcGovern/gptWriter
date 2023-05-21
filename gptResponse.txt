@@ -1,0 +1,12 @@
+Here is the updated JSON stringified input data after applying your command: 
+
+```
+{
+    "csv_file": "crmInput.csv",
+    "search_value": "XYZ Corporation",
+    "update_key": "Status",
+    "update_value": "Phenomenal Sale"
+}
+``` 
+
+Please note that this is just a stringified JSON output, and you will need to implement the actual update logic in your database based on this output.

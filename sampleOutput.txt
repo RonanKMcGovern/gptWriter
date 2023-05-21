@@ -1,0 +1,6 @@
+{
+  "csv_file": "crmInput.csv",
+  "search_value": "XYZ Corporation",
+  "update_key": "Status",
+  "update_value": "Sale Pending"
+}

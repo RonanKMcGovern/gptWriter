@@ -1,21 +1,28 @@
 import os
-from dotenv import load_dotenv
 import csv
-import openai
 import json
+from dotenv import load_dotenv
+import openai
 
-# Load .env file
-load_dotenv(dotenv_path='.env')
+def read_file(file_name):
+    with open(file_name, "r") as file:
+        return file.read()
 
-# Setup OpenAI
-openai.api_key = os.getenv('OPENAI_API_KEY')
+def read_csv_file(file_name):
+    with open(file_name, 'r') as file:
+        csvreader = csv.reader(file)
+        return json.dumps(list(csvreader))
 
-def get_openai_response(context):
+def get_openai_response(user_input, crm_input, sample_output):
     messages = [
-        {"role": "system", "content": "You are a helpful assistant and json expert."},
-        {"role": "user", "content": context},
-        {"role": "assistant", "content": "Thanks for this information."},
-        {"role": "user", "content": "Based on this information, provide an HTML code snippet that begins with a title in <h1> format, continues with a three-bullet summary using <ul> tags, and finishes with a summary of no more than 300 words. Make sure to start your response with the title."}
+        {"role": "system", "content": "You are a helpful assistant and JSON expert."},
+        {"role": "user", "content": "I am going to provide you with some input data and a command on how I would like to update that data. I expect a response in stringified JSON format that will be helpful as an input for me to update a database."},
+        {"role": "assistant", "content": "Thanks for this guidance."},
+        {"role": "user", "content": f"Here is a sample output: {sample_output}."},
+        {"role": "assistant", "content": "Thanks for this sample output."},
+        {"role": "user", "content": f"Here is the input data: {crm_input}."},
+        {"role": "assistant", "content": "Thanks for this sample input data."},
+        {"role": "user", "content": f"Here is the command: {user_input}."},
     ]
     
     try:
@@ -24,28 +31,27 @@ def get_openai_response(context):
           messages=messages
         )
         response_text = response.choices[0].message['content']
-        print(f"OpenAI Response text: {response_text[:50]}")
+        
+        # Write to file instead of console
+        with open('gptResponse.txt', 'w') as file:
+            file.write(response_text)
+        
         return response_text
     except Exception as e:
-        print(f"Error generating OpenAI response: {str(e)}")
-        raise Exception(f"Failed to generate OpenAI response. {str(e)}")
-
-def read_user_input():
-    with open("userInput.txt", "r") as file:
-        return file.read()
-
-def read_crm_input():
-    with open('crmInput.csv', 'r') as file:
-        csvreader = csv.reader(file)
-        # return the CSV data as string
-        return json.dumps(list(csvreader))
+        raise Exception(f"Failed to generate OpenAI response: {str(e)}") from e
 
 def main():
-    userInput = read_user_input()
-    crmInput = read_crm_input()
+    # Load .env file
+    load_dotenv(dotenv_path='.env')
 
-    context = userInput + " " + crmInput
-    get_openai_response(context)
+    # Setup OpenAI
+    openai.api_key = os.getenv('OPENAI_API_KEY')
+
+    user_input = read_file("userInput.txt")
+    crm_input = read_csv_file('crmInput.csv')
+    sample_output = read_file("sampleOutput.txt")
+
+    get_openai_response(user_input, crm_input, sample_output)
 
 if __name__ == '__main__':
     main()

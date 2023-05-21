@@ -1,0 +1,4 @@
+Email,Status,First Name,Last Name,Company,Phone,Address,City,State,Zip
+prospect1@example.com,Lead,John,Doe,ABC Company,1234567890,123 Main St,New York,NY,10001
+prospect2@example.com,Sale Pending,Jane,Smith,XYZ Corporation,9876543210,456 Elm St,San Francisco,CA,94101
+prospect3@example.com,Qualified,Michael,Johnson,123 Industries,5555555555,789 Oak Ave,Chicago,IL,60601
