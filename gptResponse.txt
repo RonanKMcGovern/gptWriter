@@ -1,12 +1,8 @@
-Here's the response in JSON format:
+Here is the JSON output for the command:
 
-```
 {
   "csv_file": "crmInput.csv",
-  "search_value": "XYZ Corporation",
-  "update_key": "Status",
-  "update_value": "Big Massive Sale"
+  "search_value": "123 Industries",
+  "update_key": "Phone",
+  "update_value": "790 3490 7894"
 }
-```
-
-You can use this response to update your CRM. You would need to search for the row containing "XYZ Corporation" in the CSV file "crmInput.csv" and update the value for the "Status" column to "Big Massive Sale".
